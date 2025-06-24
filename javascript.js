@@ -30,3 +30,21 @@ document.querySelector("html").classList.add("js");
 
 /* ejecutamos la función principal */
 nav();
+
+
+  let currentIndex = 0;
+  const itemsPerSlide = 3;
+  const carousel = document.querySelector('.carousel');
+  const totalItems = document.querySelectorAll('.carousel-item').length;
+
+  function moveSlide(direction) {
+    const totalSlides = Math.ceil(totalItems / itemsPerSlide);
+    currentIndex += direction;
+
+    if (currentIndex < 0) currentIndex = totalSlides - 1;
+    if (currentIndex >= totalSlides) currentIndex = 0;
+
+    const slideWidth = carousel.clientWidth / totalSlides;
+    carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+  }
+
